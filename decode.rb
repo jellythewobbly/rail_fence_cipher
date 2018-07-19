@@ -14,25 +14,21 @@ elsif (input.length + 1) % 4 == 0
     middle = (input.length - 1) / 2
 end
 
-topg = 0
-middleg = 0
-bottomg = 0
+toprow = input[0, top]
+middlerow = input[toprow.length, middle]
+bottomrow = input[toprow.length + middlerow.length, bottom]
 
 str = []
+i = 0
+j = 0
 
-top.times do
-    str << input[0+topg]
-    topg += 4
-end
-
-middle.times do
-    str << input[1+middleg]
-    middleg += 2
-end
-
-bottom.times do
-    str << input[2+bottomg]
-    bottomg += 4
+while str.length <= input.length do
+    str << toprow[i]
+    str << middlerow[i+j]
+    str << bottomrow[i]
+    j += 1
+    str << middlerow[i+j]
+    i += 1
 end
 
 puts str.join('')
